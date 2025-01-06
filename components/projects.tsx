@@ -1,35 +1,43 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export function Projects() {
-  const projects = [
-    {
-      title: "Deck Installation",
-      category: "Commercial",
-      images: ["/beforedeck.jpg", "/afterdeck.jpg"], // Adjusted for multiple images
-    },
-    {
-      title: "Concrete Ceiling Repair",
-      category: "Residential",
-      images: ["/img1.jpg", "/img2.jpg", "/img3.jpg", "/img4.jpg"], // Adjusted for multiple images
-    },
-  ];
+interface Project {
+  title: string;
+  category: string;
+  images: string[];
+}
 
-  const [currentImages, setCurrentImages] = useState(projects.map(() => 0)); // State to track the current image index for each project
+const projects: Project[] = [
+  {
+    title: "Deck Installation",
+    category: "Commercial",
+    images: ["/beforedeck.jpg", "/afterdeck.jpg"],
+  },
+  {
+    title: "Concrete Ceiling Repair",
+    category: "Residential",
+    images: ["/img1.jpg", "/img2.jpg", "/img3.jpg", "/img4.jpg"],
+  },
+];
+
+export function Projects() {
+  const [currentImages, setCurrentImages] = useState<number[]>(
+    projects.map(() => 0)
+  ); // State to track the current image index for each project
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImages((currentImages) =>
-        currentImages.map(
+      setCurrentImages((prevImages) =>
+        prevImages.map(
           (currentImage, index) =>
-            (currentImage + 1) % projects[index].images.length // Cycle through images
+            (currentImage + 1) % projects[index].images.length
         )
       );
     }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval); // Clear the interval when the component unmounts
-  }, []);
+  }, [projects]); // Added `projects` as a dependency
 
   return (
     <section

@@ -7,7 +7,15 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import "photoswipe/dist/photoswipe.css";
 import "./gallery.css";
 
-const galleryItems = [
+// Type definition for gallery items
+interface GalleryItem {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+}
+
+const galleryItems: GalleryItem[] = [
   {
     src: "/afterdeck.jpg",
     width: 300,
@@ -43,7 +51,7 @@ const galleryItems = [
 ];
 
 export default function GalleryPage() {
-  const [domLoaded, setDomLoaded] = useState(false);
+  const [domLoaded, setDomLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     setDomLoaded(true);
@@ -93,7 +101,7 @@ export default function GalleryPage() {
                 >
                   {({ ref, open }) => (
                     <motion.div
-                      ref={ref as any}
+                      ref={ref as unknown as React.MutableRefObject<HTMLDivElement>}
                       onClick={open}
                       className="cursor-pointer overflow-hidden rounded-lg"
                       whileHover={{ scale: 1.05 }}

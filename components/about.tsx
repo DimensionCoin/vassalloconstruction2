@@ -4,6 +4,19 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaInstagram } from "react-icons/fa";
 
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "Tyler Vassallo",
+    role: "Founder",
+    image: "/Tyler.jpg",
+  },
+];
 
 export default function About() {
   const fadeIn = {
@@ -51,8 +64,8 @@ export default function About() {
           </p>
           <p className="text-gray-300">
             We embrace challenges and thrive on creating solutions that meet and
-            exceed our clients' expectations. From start to finish, our goal is
-            to ensure that every client feels comfortable and confident
+            exceed our clients&apos; expectations. From start to finish, our
+            goal is to ensure that every client feels comfortable and confident
             throughout the entire process.
           </p>
         </motion.section>
@@ -72,16 +85,10 @@ export default function About() {
 
         <motion.section variants={fadeIn}>
           <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-light-brown">
-            Meet the owner
+            Meet the Owner
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Tyler Vassallo",
-                role: "Founder",
-                image: "/Tyler.jpg",
-              },
-            ].map((member, index) => (
+            {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
                 className="bg-black/30 p-6 rounded-lg text-center relative"
