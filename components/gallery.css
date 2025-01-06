@@ -1,0 +1,59 @@
+.my-masonry-grid {
+  display: flex;
+  margin-left: -16px;
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 16px;
+  background-clip: padding-box;
+}
+
+.pswp__bg {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.pswp__ui--fit .pswp__top-bar,
+.pswp__ui--fit .pswp__caption {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -15px; /* Adjust for gutters */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 15px; /* Adjust for gutters */
+  background-clip: padding-box;
+}
+
+.masonry-item {
+  position: relative;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.masonry-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.masonry-item.small {
+  height: 150px;
+}
+
+.masonry-item.medium {
+  height: 250px;
+}
+
+.masonry-item.large {
+  height: 350px;
+}
+
+
